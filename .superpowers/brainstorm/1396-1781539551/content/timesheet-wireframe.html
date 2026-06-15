@@ -1,0 +1,117 @@
+<h2>Design Section 5: Daily Timesheet (Employee)</h2>
+<p class="subtitle">Core employee screen — log hours per project per day</p>
+
+<div style="margin-top:16px;">
+  <div class="mockup">
+    <div class="mockup-header">Shared App Layout — /timesheet/daily</div>
+    <div class="mockup-body" style="padding:0;display:flex;min-height:420px;">
+
+      <!-- Sidebar -->
+      <div style="width:180px;border-right:1px solid var(--border);padding:12px 0;flex-shrink:0;">
+        <div style="padding:8px 16px;margin-bottom:8px;">
+          <div style="font-size:15px;font-weight:700;color:var(--accent);">⏱ Clocki</div>
+          <div style="font-size:10px;color:var(--subtle);">Attenix</div>
+        </div>
+        <div style="font-size:10px;font-weight:700;color:var(--subtle);padding:4px 16px;letter-spacing:.08em;margin-bottom:4px;">TIMESHEETS</div>
+        <div style="padding:7px 16px;font-size:13px;background:var(--accent);color:white;border-radius:0 6px 6px 0;margin-right:8px;">Daily</div>
+        <div style="padding:7px 16px;font-size:13px;color:var(--text);">Periodic</div>
+        <div style="font-size:10px;font-weight:700;color:var(--subtle);padding:4px 16px;letter-spacing:.08em;margin:8px 0 4px;">LEAVE</div>
+        <div style="padding:7px 16px;font-size:13px;color:var(--text);">Absences</div>
+        <div style="padding:7px 16px;font-size:13px;color:var(--text);">Vacation Requests</div>
+        <div style="font-size:10px;font-weight:700;color:var(--subtle);padding:4px 16px;letter-spacing:.08em;margin:8px 0 4px;">DOCUMENTS</div>
+        <div style="padding:7px 16px;font-size:13px;color:var(--text);">Upload Documents</div>
+        <div style="padding:7px 16px;font-size:13px;color:var(--text);">Client Reports</div>
+      </div>
+
+      <!-- Main content -->
+      <div style="flex:1;display:flex;flex-direction:column;">
+        <!-- Top bar -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 16px;border-bottom:1px solid var(--border);">
+          <div style="font-size:13px;font-weight:600;color:var(--text);">Daily Timesheet</div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="font-size:11px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:3px 10px;cursor:pointer;">🌐 HE / <strong>EN</strong></div>
+            <div style="font-size:12px;color:var(--subtle);">ארבל, עידן ▾</div>
+          </div>
+        </div>
+
+        <!-- Period nav + status -->
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);">
+          <div class="mock-button" style="padding:4px 10px;font-size:12px;">‹ Prev</div>
+          <div style="font-size:13px;font-weight:600;color:var(--text);">June 2026</div>
+          <div class="mock-button" style="padding:4px 10px;font-size:12px;">Next ›</div>
+          <span style="margin-left:auto;background:#fef9c3;color:#854d0e;border-radius:4px;padding:3px 8px;font-size:11px;font-weight:600;">Draft</span>
+          <div class="mock-button" style="padding:4px 12px;font-size:12px;">Submit for Approval</div>
+        </div>
+
+        <!-- Timesheet table -->
+        <div style="flex:1;overflow:auto;padding:8px 16px;">
+          <table style="width:100%;border-collapse:collapse;font-size:12px;">
+            <thead>
+              <tr style="background:var(--surface);">
+                <th style="padding:6px 8px;text-align:left;color:var(--subtle);font-weight:600;width:80px;">Date</th>
+                <th style="padding:6px 8px;text-align:left;color:var(--subtle);font-weight:600;width:40px;">Day</th>
+                <th style="padding:6px 8px;text-align:left;color:var(--subtle);font-weight:600;">Project</th>
+                <th style="padding:6px 8px;text-align:center;color:var(--subtle);font-weight:600;width:60px;">Hours</th>
+                <th style="padding:6px 8px;text-align:left;color:var(--subtle);font-weight:600;width:120px;">Notes</th>
+                <th style="padding:6px 8px;width:30px;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:7px 8px;color:var(--text);font-weight:500;">01/06</td>
+                <td style="padding:7px 8px;color:var(--subtle);">Sun</td>
+                <td style="padding:7px 8px;">
+                  <select style="font-size:12px;border:1px solid var(--border);border-radius:4px;padding:3px 6px;color:var(--text);background:var(--surface);width:150px;">
+                    <option>Attenix Core</option>
+                  </select>
+                </td>
+                <td style="padding:7px 8px;text-align:center;"><input type="text" value="8.0" style="width:45px;text-align:center;border:1px solid var(--border);border-radius:4px;padding:3px;font-size:12px;"></td>
+                <td style="padding:7px 8px;"><input type="text" placeholder="Notes..." style="width:110px;border:1px solid var(--border);border-radius:4px;padding:3px 5px;font-size:12px;"></td>
+                <td style="padding:7px 8px;text-align:center;color:#ef4444;cursor:pointer;">✕</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#fafafa;">
+                <td style="padding:7px 8px;color:var(--text);font-weight:500;">02/06</td>
+                <td style="padding:7px 8px;color:var(--subtle);">Mon</td>
+                <td style="padding:7px 8px;">
+                  <select style="font-size:12px;border:1px solid var(--border);border-radius:4px;padding:3px 6px;color:var(--text);background:#fafafa;width:150px;">
+                    <option>R&D Research</option>
+                  </select>
+                </td>
+                <td style="padding:7px 8px;text-align:center;"><input type="text" value="7.5" style="width:45px;text-align:center;border:1px solid var(--border);border-radius:4px;padding:3px;font-size:12px;"></td>
+                <td style="padding:7px 8px;"><input type="text" placeholder="Notes..." style="width:110px;border:1px solid var(--border);border-radius:4px;padding:3px 5px;font-size:12px;"></td>
+                <td style="padding:7px 8px;text-align:center;color:#ef4444;cursor:pointer;">✕</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:7px 8px;color:var(--text);font-weight:500;">04/06</td>
+                <td style="padding:7px 8px;color:#dc2626;">Thu</td>
+                <td colspan="3" style="padding:7px 8px;color:#dc2626;font-style:italic;font-size:11px;">Absence: Spouse sick — 8.00 hrs</td>
+                <td style="padding:7px 8px;"></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#f0fdf4;">
+                <td colspan="6" style="padding:6px 8px;">
+                  <button style="font-size:11px;color:var(--accent);background:none;border:1px dashed var(--accent);border-radius:4px;padding:3px 10px;cursor:pointer;">+ Add row</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Totals -->
+          <div style="display:flex;justify-content:flex-end;padding:10px 0;gap:20px;">
+            <div style="font-size:12px;color:var(--subtle);">Total this period: <strong style="color:var(--text);">15.5 hrs</strong></div>
+            <div style="font-size:12px;color:var(--subtle);">Absence hours: <strong style="color:#dc2626;">8.0 hrs</strong></div>
+          </div>
+        </div>
+
+        <!-- Save bar -->
+        <div style="padding:10px 16px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end;">
+          <div class="mock-button" style="font-size:12px;padding:5px 16px;background:transparent;border:1px solid var(--border);color:var(--text);">Discard</div>
+          <div class="mock-button" style="font-size:12px;padding:5px 16px;">Save</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;font-size:13px;color:var(--text);">
+  <strong>Key behaviours:</strong> Only projects assigned to the employee by admin appear in the dropdown · Absence days are auto-populated (read-only) · Submit locks the sheet and notifies the manager · Language toggle flips the entire layout RTL↔LTR
+</div>

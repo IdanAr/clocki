@@ -1,0 +1,110 @@
+<h2>Design Section 3: Screen Map & Navigation</h2>
+<p class="subtitle">All routes by role — does anything look missing or out of place?</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px;">
+
+  <!-- Employee -->
+  <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:16px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#4ade80;margin-bottom:12px;">EMPLOYEE ROLE</div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--subtle);margin-bottom:6px;">Auth</div>
+    <div style="font-size:13px;line-height:2;color:var(--text);margin-bottom:12px;">
+      /login<br>
+      /login/otp
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--subtle);margin-bottom:6px;">Timesheets</div>
+    <div style="font-size:13px;line-height:2;color:var(--text);margin-bottom:12px;">
+      /timesheet/daily<br>
+      /timesheet/periodic<br>
+      /timesheet/[id]
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--subtle);margin-bottom:6px;">Absences</div>
+    <div style="font-size:13px;line-height:2;color:var(--text);margin-bottom:12px;">
+      /absences<br>
+      /absences/upload-note
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--subtle);margin-bottom:6px;">Vacation</div>
+    <div style="font-size:13px;line-height:2;color:var(--text);margin-bottom:12px;">
+      /vacation/requests<br>
+      /vacation/new<br>
+      /vacation/continuous
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--subtle);margin-bottom:6px;">Documents</div>
+    <div style="font-size:13px;line-height:2;color:var(--text);margin-bottom:12px;">
+      /documents<br>
+      /documents/upload-client-report
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--subtle);margin-bottom:6px;">Profile</div>
+    <div style="font-size:13px;line-height:2;color:var(--text);">
+      /profile
+    </div>
+  </div>
+
+  <!-- Manager -->
+  <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:16px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#60a5fa;margin-bottom:12px;">MANAGER ROLE <span style="font-weight:400;color:var(--subtle)">(+ all employee screens)</span></div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--subtle);margin-bottom:6px;">Approval Queue</div>
+    <div style="font-size:13px;line-height:2;color:var(--text);margin-bottom:12px;">
+      /manager/approvals<br>
+      /manager/approvals/[id]
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--subtle);margin-bottom:6px;">Team View</div>
+    <div style="font-size:13px;line-height:2;color:var(--text);margin-bottom:12px;">
+      /manager/team<br>
+      /manager/team/[userId]/timesheet<br>
+      /manager/team/[userId]/absences
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--subtle);margin-bottom:6px;">Reports</div>
+    <div style="font-size:13px;line-height:2;color:var(--text);">
+      /manager/reports<br>
+      /manager/reports/absences<br>
+      /manager/reports/hours-by-project<br>
+      /manager/reports/employee-details
+    </div>
+  </div>
+
+  <!-- Admin -->
+  <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:16px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#f472b6;margin-bottom:12px;">ADMIN ROLE <span style="font-weight:400;color:var(--subtle)">(+ all above)</span></div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--subtle);margin-bottom:6px;">Projects</div>
+    <div style="font-size:13px;line-height:2;color:var(--text);margin-bottom:12px;">
+      /admin/projects<br>
+      /admin/projects/new<br>
+      /admin/projects/[id]/edit
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--subtle);margin-bottom:6px;">Users</div>
+    <div style="font-size:13px;line-height:2;color:var(--text);margin-bottom:12px;">
+      /admin/users<br>
+      /admin/users/new<br>
+      /admin/users/[id]/edit<br>
+      /admin/users/[id]/assign-projects
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--subtle);margin-bottom:6px;">Departments</div>
+    <div style="font-size:13px;line-height:2;color:var(--text);margin-bottom:12px;">
+      /admin/departments<br>
+      /admin/departments/new
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--subtle);margin-bottom:6px;">Settings</div>
+    <div style="font-size:13px;line-height:2;color:var(--text);">
+      /admin/settings<br>
+      /admin/settings/company
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top:20px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;font-size:13px;color:var(--text);">
+  <strong>Shared layout:</strong> All authenticated routes share a sidebar nav (collapsible) with role-filtered menu items, a top bar with language toggle (HE/EN) and user menu, and RTL/LTR layout that flips based on the selected language.
+</div>

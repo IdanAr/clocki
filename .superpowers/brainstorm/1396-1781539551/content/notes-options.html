@@ -1,0 +1,78 @@
+<h2>Notes UX — Which style feels right?</h2>
+<p class="subtitle">Click to select your preferred approach</p>
+
+<div class="options" style="margin-top:16px;">
+
+  <!-- Option A: Inline expand -->
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Inline Expandable Row</h3>
+      <p>A small "📝 Notes" icon/link in the row. Clicking it expands a textarea directly below that row — no modal, no navigation away. Close with ✕ or clicking elsewhere.</p>
+      <div style="margin-top:10px;border:1px solid var(--border);border-radius:8px;overflow:hidden;font-size:12px;">
+        <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-bottom:1px solid var(--border);background:var(--surface);">
+          <span style="color:var(--text);font-weight:500;">01/06</span>
+          <span style="color:var(--subtle);">Sun</span>
+          <span style="flex:1;color:var(--text);">Attenix Core</span>
+          <span style="color:var(--text);font-weight:600;">8.0 h</span>
+          <span style="color:var(--accent);cursor:pointer;font-size:11px;border:1px solid var(--accent);border-radius:4px;padding:2px 7px;">📝 Add note</span>
+        </div>
+        <!-- Expanded notes area -->
+        <div style="padding:10px;background:#f8faff;border-top:1px dashed var(--accent);">
+          <div style="font-size:11px;color:var(--subtle);margin-bottom:4px;">Your note for 01/06:</div>
+          <textarea style="width:100%;height:70px;border:1px solid var(--border);border-radius:6px;padding:6px;font-size:12px;resize:vertical;font-family:inherit;" placeholder="Add a note about your work today..."></textarea>
+          <div style="display:flex;justify-content:flex-end;gap:6px;margin-top:6px;">
+            <button style="font-size:11px;padding:3px 10px;border:1px solid var(--border);border-radius:4px;background:transparent;cursor:pointer;color:var(--text);">Cancel</button>
+            <button style="font-size:11px;padding:3px 10px;border:none;border-radius:4px;background:var(--accent);color:white;cursor:pointer;">Save note</button>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:8px;font-size:12px;color:var(--subtle);">
+        ✓ No context switch · stays in the table · note badge shows when note exists
+      </div>
+    </div>
+  </div>
+
+  <!-- Option B: Slide-out panel -->
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Side Drawer / Slide-out Panel</h3>
+      <p>Clicking the notes icon slides out a panel from the right with a rich, spacious textarea. Shows employee note + manager note (read-only) side by side. Closes on ✕ or overlay click.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;border:1px solid var(--border);border-radius:8px;overflow:hidden;font-size:12px;min-height:130px;">
+        <!-- Table stub -->
+        <div style="flex:1;padding:8px;background:var(--surface);">
+          <div style="padding:6px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px;">
+            <span style="color:var(--text);font-weight:500;">01/06</span>
+            <span style="flex:1;color:var(--text);">Attenix Core</span>
+            <span style="font-weight:600;">8.0h</span>
+            <span style="color:var(--accent);font-size:16px;cursor:pointer;">💬</span>
+          </div>
+          <div style="padding:6px;display:flex;align-items:center;gap:6px;opacity:.5;">
+            <span style="color:var(--text);font-weight:500;">02/06</span>
+            <span style="flex:1;color:var(--text);">R&D Research</span>
+            <span style="font-weight:600;">7.5h</span>
+            <span style="color:var(--subtle);font-size:16px;">💬</span>
+          </div>
+        </div>
+        <!-- Drawer -->
+        <div style="width:170px;border-left:2px solid var(--accent);padding:10px;background:white;">
+          <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:4px;">📅 01/06 — Notes</div>
+          <div style="font-size:10px;color:var(--subtle);margin-bottom:2px;">Your note:</div>
+          <textarea style="width:100%;height:50px;border:1px solid var(--border);border-radius:4px;padding:4px;font-size:11px;resize:none;font-family:inherit;" placeholder="Add note..."></textarea>
+          <div style="font-size:10px;color:var(--subtle);margin-top:6px;margin-bottom:2px;">Manager note:</div>
+          <div style="font-size:11px;color:var(--subtle);font-style:italic;padding:4px;background:#f3f4f6;border-radius:4px;">No manager note yet.</div>
+          <button style="margin-top:8px;width:100%;font-size:11px;padding:4px;border:none;border-radius:4px;background:var(--accent);color:white;cursor:pointer;">Save</button>
+        </div>
+      </div>
+      <div style="margin-top:8px;font-size:12px;color:var(--subtle);">
+        ✓ More space · shows manager notes too · great for detailed feedback
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top:16px;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--subtle);">
+  In both options: a note badge/icon on the row shows when a note exists. Manager notes are always read-only for employees.
+</div>

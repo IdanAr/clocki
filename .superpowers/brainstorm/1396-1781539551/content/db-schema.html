@@ -1,0 +1,117 @@
+<h2>Design Section 2: Database Schema</h2>
+<p class="subtitle">Core tables and relationships — does this cover everything you need?</p>
+
+<div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:16px;">
+
+  <div style="flex:1;min-width:220px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:16px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:8px;">USERS</div>
+    <div style="font-size:13px;line-height:2;font-family:monospace;color:var(--text);">
+      id (uuid, PK)<br>
+      email<br>
+      full_name_he (Hebrew)<br>
+      full_name_en (English)<br>
+      employee_number<br>
+      role: employee|manager|admin<br>
+      department_id (FK)<br>
+      manager_id (FK → users)<br>
+      created_at
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:220px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:16px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:8px;">PROJECTS</div>
+    <div style="font-size:13px;line-height:2;font-family:monospace;color:var(--text);">
+      id (uuid, PK)<br>
+      name_he (Hebrew)<br>
+      name_en (English)<br>
+      code<br>
+      billing_type: billable|internal<br>
+      is_active (bool)<br>
+      created_by (FK → users)<br>
+      created_at
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:220px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:16px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:8px;">TIMESHEETS</div>
+    <div style="font-size:13px;line-height:2;font-family:monospace;color:var(--text);">
+      id (uuid, PK)<br>
+      employee_id (FK → users)<br>
+      period_start (date)<br>
+      period_end (date)<br>
+      status: draft|submitted|approved|rejected<br>
+      approved_by (FK → users)<br>
+      approved_at<br>
+      created_at
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:220px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:16px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:8px;">TIMESHEET_ENTRIES</div>
+    <div style="font-size:13px;line-height:2;font-family:monospace;color:var(--text);">
+      id (uuid, PK)<br>
+      timesheet_id (FK)<br>
+      project_id (FK → projects)<br>
+      work_date (date)<br>
+      hours (decimal)<br>
+      employee_notes<br>
+      manager_notes
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:220px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:16px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:8px;">ABSENCES</div>
+    <div style="font-size:13px;line-height:2;font-family:monospace;color:var(--text);">
+      id (uuid, PK)<br>
+      employee_id (FK → users)<br>
+      type: sick|vacation|military|<br>&nbsp;&nbsp;spouse_sick|parent_sick|child_sick<br>
+      date_start (date)<br>
+      date_end (date)<br>
+      hours (decimal)<br>
+      notes<br>
+      document_url (Storage)
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:220px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:16px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:8px;">VACATION_REQUESTS</div>
+    <div style="font-size:13px;line-height:2;font-family:monospace;color:var(--text);">
+      id (uuid, PK)<br>
+      employee_id (FK → users)<br>
+      date_start (date)<br>
+      date_end (date)<br>
+      type: periodic|continuous<br>
+      status: pending|approved|rejected<br>
+      manager_notes<br>
+      created_at
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:220px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:16px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:8px;">DEPARTMENTS</div>
+    <div style="font-size:13px;line-height:2;font-family:monospace;color:var(--text);">
+      id (uuid, PK)<br>
+      name_he<br>
+      name_en<br>
+      manager_id (FK → users)
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:220px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:16px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:8px;">DOCUMENTS</div>
+    <div style="font-size:13px;line-height:2;font-family:monospace;color:var(--text);">
+      id (uuid, PK)<br>
+      employee_id (FK → users)<br>
+      type: client_report|absence_note<br>
+      file_url (Supabase Storage)<br>
+      file_name<br>
+      absence_id (FK, nullable)<br>
+      uploaded_at
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top:20px;padding:14px;background:var(--surface);border-radius:8px;border:1px solid var(--border);font-size:13px;color:var(--subtle);">
+  <strong style="color:var(--text);">RLS Rules:</strong> Employees see only their own rows. Managers see their team's rows. Admins see all. Enforced via Supabase Row Level Security policies on every table.
+</div>
