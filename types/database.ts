@@ -17,6 +17,7 @@ export interface Database {
         Row: { id: string; name_he: string; name_en: string; manager_id: string | null }
         Insert: Omit<Database['public']['Tables']['departments']['Row'], 'id'>
         Update: Partial<Database['public']['Tables']['departments']['Row']>
+        Relationships: []
       }
       users: {
         Row: {
@@ -29,6 +30,7 @@ export interface Database {
         }
         Insert: Omit<Database['public']['Tables']['users']['Row'], 'created_at'>
         Update: Partial<Database['public']['Tables']['users']['Row']>
+        Relationships: []
       }
       projects: {
         Row: {
@@ -38,11 +40,13 @@ export interface Database {
         }
         Insert: Omit<Database['public']['Tables']['projects']['Row'], 'id' | 'created_at'>
         Update: Partial<Database['public']['Tables']['projects']['Row']>
+        Relationships: []
       }
       user_projects: {
         Row: { user_id: string; project_id: string; assigned_at: string; assigned_by: string | null }
         Insert: Omit<Database['public']['Tables']['user_projects']['Row'], 'assigned_at'>
         Update: Partial<Database['public']['Tables']['user_projects']['Row']>
+        Relationships: []
       }
       timesheets: {
         Row: {
@@ -53,6 +57,7 @@ export interface Database {
         }
         Insert: Omit<Database['public']['Tables']['timesheets']['Row'], 'id' | 'created_at'>
         Update: Partial<Database['public']['Tables']['timesheets']['Row']>
+        Relationships: []
       }
       timesheet_entries: {
         Row: {
@@ -62,6 +67,7 @@ export interface Database {
         }
         Insert: Omit<Database['public']['Tables']['timesheet_entries']['Row'], 'id'>
         Update: Partial<Database['public']['Tables']['timesheet_entries']['Row']>
+        Relationships: []
       }
       absences: {
         Row: {
@@ -71,6 +77,7 @@ export interface Database {
         }
         Insert: Omit<Database['public']['Tables']['absences']['Row'], 'id' | 'created_at'>
         Update: Partial<Database['public']['Tables']['absences']['Row']>
+        Relationships: []
       }
       vacation_requests: {
         Row: {
@@ -81,6 +88,7 @@ export interface Database {
         }
         Insert: Omit<Database['public']['Tables']['vacation_requests']['Row'], 'id' | 'created_at'>
         Update: Partial<Database['public']['Tables']['vacation_requests']['Row']>
+        Relationships: []
       }
       documents: {
         Row: {
@@ -90,11 +98,15 @@ export interface Database {
         }
         Insert: Omit<Database['public']['Tables']['documents']['Row'], 'id' | 'uploaded_at'>
         Update: Partial<Database['public']['Tables']['documents']['Row']>
+        Relationships: []
       }
     }
+    Views: Record<string, never>
     Functions: {
       get_my_role: { Args: Record<string, never>; Returns: UserRole }
       is_my_direct_report: { Args: { employee_uuid: string }; Returns: boolean }
     }
+    Enums: Record<string, never>
+    CompositeTypes: Record<string, never>
   }
 }

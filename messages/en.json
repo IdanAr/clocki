@@ -53,14 +53,99 @@
     "notes": "Notes",
     "employeeNotes": "Your note",
     "managerNotes": "Manager note",
+    "noManagerNote": "No manager note yet.",
     "addRow": "Add row",
-    "submit": "Submit for approval",
+    "submit": "Submit for Approval",
+    "submitConfirm": "Submit this timesheet for manager approval? You won't be able to edit it after submission.",
     "save": "Save",
+    "saving": "Saving...",
+    "detail": "Timesheet Detail",
     "status": {
       "draft": "Draft",
       "submitted": "Pending approval",
       "approved": "Approved",
       "rejected": "Rejected"
+    },
+    "totalHours": "Total hours",
+    "absenceHours": "Absence hours",
+    "noEntries": "No entries yet. Click \"Add row\" to start.",
+    "noTimesheets": "No timesheets found.",
+    "period": "Period"
+  },
+  "absences": {
+    "title": "Absences",
+    "newAbsence": "Log Absence",
+    "type": "Type",
+    "dateStart": "From",
+    "dateEnd": "To",
+    "hours": "Hours",
+    "notes": "Notes",
+    "document": "Document",
+    "noAbsences": "No absences recorded.",
+    "types": {
+      "sick": "Sick leave",
+      "vacation": "Vacation",
+      "military": "Military reserve",
+      "spouse_sick": "Spouse sick",
+      "parent_sick": "Parent sick",
+      "child_sick": "Child sick",
+      "pregnancy_test": "Pregnancy test"
+    },
+    "save": "Save Absence",
+    "cancel": "Cancel",
+    "uploadNote": "Upload absence note"
+  },
+  "vacation": {
+    "title": "Vacation Requests",
+    "newRequest": "New Request",
+    "dateStart": "From",
+    "dateEnd": "To",
+    "type": "Type",
+    "notes": "Notes",
+    "status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "types": {
+      "periodic": "Periodic",
+      "continuous": "Continuous"
+    },
+    "noRequests": "No vacation requests yet.",
+    "submit": "Submit Request",
+    "cancel": "Cancel",
+    "managerNotes": "Manager notes"
+  },
+  "documents": {
+    "title": "Documents",
+    "uploadClientReport": "Upload Client Report",
+    "uploadAbsenceNote": "Upload Absence Note",
+    "fileName": "File name",
+    "type": "Type",
+    "uploadedAt": "Uploaded",
+    "noDocuments": "No documents uploaded yet.",
+    "types": {
+      "client_report": "Client report",
+      "absence_note": "Absence note"
+    },
+    "selectFile": "Select file",
+    "uploading": "Uploading...",
+    "upload": "Upload",
+    "maxSize": "Max 5 MB. Accepted: PDF, JPG, PNG, BMP, GIF, TIFF"
+  },
+  "profile": {
+    "title": "My Profile",
+    "fullNameHe": "Full name (Hebrew)",
+    "fullNameEn": "Full name (English)",
+    "employeeNumber": "Employee #",
+    "email": "Email",
+    "role": "Role",
+    "department": "Department",
+    "manager": "Direct manager",
+    "roles": {
+      "employee": "Employee",
+      "manager": "Manager",
+      "admin": "Admin"
     }
   }
 }

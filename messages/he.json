@@ -53,14 +53,99 @@
     "notes": "הערות",
     "employeeNotes": "הערות עובד",
     "managerNotes": "הערות ממונה",
+    "noManagerNote": "אין הערת ממונה עדיין.",
     "addRow": "הוסף שורה",
     "submit": "שלח לאישור",
+    "submitConfirm": "לשלוח גיליון זה לאישור ממונה? לא ניתן יהיה לערוך לאחר השליחה.",
     "save": "שמור",
+    "saving": "שומר...",
+    "detail": "פרטי גיליון",
     "status": {
       "draft": "טיוטה",
       "submitted": "ממתין לאישור",
       "approved": "אושר",
       "rejected": "נדחה"
+    },
+    "totalHours": "סה\"כ שעות",
+    "absenceHours": "שעות היעדרות",
+    "noEntries": "אין רשומות. לחץ על \"הוסף שורה\" כדי להתחיל.",
+    "noTimesheets": "לא נמצאו גיליונות.",
+    "period": "תקופה"
+  },
+  "absences": {
+    "title": "היעדרויות",
+    "newAbsence": "דיווח היעדרות",
+    "type": "סוג",
+    "dateStart": "מתאריך",
+    "dateEnd": "עד תאריך",
+    "hours": "שעות",
+    "notes": "הערות",
+    "document": "מסמך",
+    "noAbsences": "לא נרשמו היעדרויות.",
+    "types": {
+      "sick": "מחלה",
+      "vacation": "חופשה",
+      "military": "מילואים",
+      "spouse_sick": "מחלת בן/בת זוג",
+      "parent_sick": "מחלת הורה",
+      "child_sick": "מחלת ילד",
+      "pregnancy_test": "בדיקת היריון"
+    },
+    "save": "שמור היעדרות",
+    "cancel": "ביטול",
+    "uploadNote": "העלאת אישור היעדרות"
+  },
+  "vacation": {
+    "title": "בקשות חופשה",
+    "newRequest": "בקשה חדשה",
+    "dateStart": "מתאריך",
+    "dateEnd": "עד תאריך",
+    "type": "סוג",
+    "notes": "הערות",
+    "status": {
+      "pending": "ממתין",
+      "approved": "אושר",
+      "rejected": "נדחה"
+    },
+    "types": {
+      "periodic": "תקופתית",
+      "continuous": "רציפה"
+    },
+    "noRequests": "אין בקשות חופשה עדיין.",
+    "submit": "שלח בקשה",
+    "cancel": "ביטול",
+    "managerNotes": "הערות ממונה"
+  },
+  "documents": {
+    "title": "מסמכים",
+    "uploadClientReport": "העלאת דוח לקוח",
+    "uploadAbsenceNote": "העלאת אישור היעדרות",
+    "fileName": "שם קובץ",
+    "type": "סוג",
+    "uploadedAt": "הועלה",
+    "noDocuments": "לא הועלו מסמכים עדיין.",
+    "types": {
+      "client_report": "דוח לקוח",
+      "absence_note": "אישור היעדרות"
+    },
+    "selectFile": "בחר קובץ",
+    "uploading": "מעלה...",
+    "upload": "העלה",
+    "maxSize": "עד 5 מ\"ב. סוגים מותרים: PDF, JPG, PNG, BMP, GIF, TIFF"
+  },
+  "profile": {
+    "title": "הפרופיל שלי",
+    "fullNameHe": "שם מלא (עברית)",
+    "fullNameEn": "שם מלא (אנגלית)",
+    "employeeNumber": "מספר עובד",
+    "email": "אימייל",
+    "role": "תפקיד",
+    "department": "מחלקה",
+    "manager": "ממונה ישיר",
+    "roles": {
+      "employee": "עובד",
+      "manager": "מנהל",
+      "admin": "מנהל מערכת"
     }
   }
 }
