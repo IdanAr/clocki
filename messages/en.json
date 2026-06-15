@@ -31,7 +31,9 @@
     "verify": "Verify",
     "backToLogin": "Back to login",
     "loggingIn": "Signing in...",
-    "sending": "Sending..."
+    "sending": "Sending...",
+    "checkEmail": "Check your email",
+    "checkEmailDesc": "We sent a sign-in link to {email}. Click the link to sign in."
   },
   "common": {
     "save": "Save",

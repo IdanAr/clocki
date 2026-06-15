@@ -31,7 +31,9 @@
     "verify": "אמת",
     "backToLogin": "חזור להתחברות",
     "loggingIn": "מתחבר...",
-    "sending": "שולח..."
+    "sending": "שולח...",
+    "checkEmail": "בדוק את האימייל שלך",
+    "checkEmailDesc": "שלחנו קישור כניסה לכתובת {email}. לחץ על הקישור כדי להתחבר."
   },
   "common": {
     "save": "שמור",
