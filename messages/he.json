@@ -147,5 +147,29 @@
       "manager": "מנהל",
       "admin": "מנהל מערכת"
     }
+  },
+  "manager": {
+    "approvals": "אישורים",
+    "approvalsEmpty": "אין גיליונות ממתינים לאישור.",
+    "approveBtn": "אשר",
+    "rejectBtn": "דחה",
+    "approveConfirm": "לאשר גיליון זה?",
+    "rejectConfirm": "לדחות גיליון זה? העובד יצטרך לשלוח מחדש.",
+    "approved": "אושר",
+    "rejected": "נדחה",
+    "addManagerNote": "הוסף הערה לרשומה...",
+    "team": "הצוות שלי",
+    "teamEmpty": "לא נמצאו עובדים תחת ניהולך.",
+    "viewTimesheet": "צפה בגיליונות",
+    "viewAbsences": "צפה בהיעדרויות",
+    "reports": "דוחות",
+    "reportHours": "שעות לפי פרויקט",
+    "reportAbsences": "היעדרויות צוות",
+    "reportEmployeeDetails": "פרטי עובד",
+    "noData": "אין נתונים לתקופה זו.",
+    "employee": "עובד",
+    "totalHours": "סה\"כ שעות",
+    "submittedAt": "נשלח",
+    "periodLabel": "תקופה"
   }
 }

@@ -147,5 +147,29 @@
       "manager": "Manager",
       "admin": "Admin"
     }
+  },
+  "manager": {
+    "approvals": "Approvals",
+    "approvalsEmpty": "No timesheets awaiting approval.",
+    "approveBtn": "Approve",
+    "rejectBtn": "Reject",
+    "approveConfirm": "Approve this timesheet?",
+    "rejectConfirm": "Reject this timesheet? The employee will need to resubmit.",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "addManagerNote": "Add note to entry...",
+    "team": "My Team",
+    "teamEmpty": "No direct reports found.",
+    "viewTimesheet": "View timesheets",
+    "viewAbsences": "View absences",
+    "reports": "Reports",
+    "reportHours": "Hours by Project",
+    "reportAbsences": "Team Absences",
+    "reportEmployeeDetails": "Employee Details",
+    "noData": "No data for this period.",
+    "employee": "Employee",
+    "totalHours": "Total hours",
+    "submittedAt": "Submitted",
+    "periodLabel": "Period"
   }
 }
