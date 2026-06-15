@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "timesheets": "Timesheets",
+    "daily": "Daily",
+    "periodic": "Periodic",
+    "absences": "Absences",
+    "vacation": "Vacation",
+    "vacationRequests": "Vacation Requests",
+    "newVacation": "New Vacation Request",
+    "continuousVacation": "Continuous Vacation",
+    "documents": "Documents",
+    "uploadClientReport": "Upload Client Report",
+    "profile": "Profile",
+    "logout": "Logout",
+    "approvals": "Approvals",
+    "team": "My Team",
+    "reports": "Reports",
+    "adminProjects": "Projects",
+    "adminUsers": "Users",
+    "adminDepartments": "Departments",
+    "adminSettings": "Settings"
+  },
+  "auth": {
+    "title": "Sign in",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "your@email.com",
+    "sendOtp": "Send Code",
+    "otpTitle": "Enter verification code",
+    "otpDescription": "We sent a one-time code to your email",
+    "otpLabel": "One-time code",
+    "verify": "Verify",
+    "backToLogin": "Back to login",
+    "loggingIn": "Signing in...",
+    "sending": "Sending..."
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "search": "Search",
+    "loading": "Loading...",
+    "welcome": "Welcome"
+  },
+  "timesheet": {
+    "daily": "Daily Timesheet",
+    "periodic": "Periodic Timesheet",
+    "project": "Project",
+    "hours": "Hours",
+    "notes": "Notes",
+    "employeeNotes": "Your note",
+    "managerNotes": "Manager note",
+    "addRow": "Add row",
+    "submit": "Submit for approval",
+    "save": "Save",
+    "status": {
+      "draft": "Draft",
+      "submitted": "Pending approval",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    }
+  }
+}

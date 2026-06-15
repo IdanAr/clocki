@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "timesheets": "גיליונות",
+    "daily": "יומי",
+    "periodic": "תקופתי",
+    "absences": "היעדרויות",
+    "vacation": "חופשות",
+    "vacationRequests": "בקשות חופשה",
+    "newVacation": "בקשת חופשה חדשה",
+    "continuousVacation": "חופשה רציפה",
+    "documents": "מסמכים",
+    "uploadClientReport": "העלאת דוח לקוח",
+    "profile": "פרטים אישיים",
+    "logout": "יציאה",
+    "approvals": "אישורים",
+    "team": "הצוות שלי",
+    "reports": "דוחות",
+    "adminProjects": "ניהול פרויקטים",
+    "adminUsers": "ניהול משתמשים",
+    "adminDepartments": "מחלקות",
+    "adminSettings": "הגדרות"
+  },
+  "auth": {
+    "title": "כניסה למערכת",
+    "emailLabel": "כתובת אימייל",
+    "emailPlaceholder": "your@email.com",
+    "sendOtp": "שלח קוד",
+    "otpTitle": "הזן קוד אימות",
+    "otpDescription": "שלחנו קוד חד-פעמי לאימייל שלך",
+    "otpLabel": "קוד חד-פעמי",
+    "verify": "אמת",
+    "backToLogin": "חזור להתחברות",
+    "loggingIn": "מתחבר...",
+    "sending": "שולח..."
+  },
+  "common": {
+    "save": "שמור",
+    "cancel": "ביטול",
+    "edit": "ערוך",
+    "delete": "מחק",
+    "add": "הוסף",
+    "search": "חיפוש",
+    "loading": "טוען...",
+    "welcome": "ברוכים הבאים"
+  },
+  "timesheet": {
+    "daily": "דוח יומי",
+    "periodic": "דוח תקופתי",
+    "project": "פרויקט",
+    "hours": "שעות",
+    "notes": "הערות",
+    "employeeNotes": "הערות עובד",
+    "managerNotes": "הערות ממונה",
+    "addRow": "הוסף שורה",
+    "submit": "שלח לאישור",
+    "save": "שמור",
+    "status": {
+      "draft": "טיוטה",
+      "submitted": "ממתין לאישור",
+      "approved": "אושר",
+      "rejected": "נדחה"
+    }
+  }
+}
