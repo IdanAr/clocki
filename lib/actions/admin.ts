@@ -196,15 +196,8 @@ export async function resetUserPassword(userId: string): Promise<{ success: bool
       .single()
     if (profileError || !profile) return { success: false, error: 'User not found' }
 
-    // Mark password as unset so the callback routes them to set-password
-    const { error: updateError } = await serviceClient
-      .from('users')
-      .update({ password_set: false })
-      .eq('id', userId)
-    if (updateError) return { success: false, error: updateError.message }
-
     // Revoke all active sessions for the user immediately
-    await fetch(
+    const logoutRes = await fetch(
       `${process.env.NEXT_PUBLIC_SUPABASE_URL}/auth/v1/admin/users/${userId}/logout`,
       {
         method: 'POST',
@@ -214,6 +207,16 @@ export async function resetUserPassword(userId: string): Promise<{ success: bool
         },
       }
     )
+    if (!logoutRes.ok) {
+      return { success: false, error: 'Failed to revoke user sessions' }
+    }
+
+    // Mark password as unset so the callback routes them to set-password
+    const { error: updateError } = await serviceClient
+      .from('users')
+      .update({ password_set: false })
+      .eq('id', userId)
+    if (updateError) return { success: false, error: updateError.message }
 
     // Send recovery email — link goes through /auth/callback which will
     // detect password_set=false and redirect to /login/set-password

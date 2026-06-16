@@ -36,10 +36,16 @@ export async function GET(request: NextRequest) {
 
   if (code) {
     const { data, error: err } = await supabase.auth.exchangeCodeForSession(code)
-    if (!err) user = data.user
+    if (err) {
+      return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent(err.message)}`)
+    }
+    user = data.user
   } else if (tokenHash && type) {
     const { data, error: err } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type })
-    if (!err) user = data.user ?? null
+    if (err) {
+      return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent(err.message)}`)
+    }
+    user = data.user ?? null
   }
 
   if (user) {
