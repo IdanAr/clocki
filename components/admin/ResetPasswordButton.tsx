@@ -12,6 +12,7 @@ export default function ResetPasswordButton({ userId }: { userId: string }) {
   const handleClick = () => {
     if (!confirm(t('resetPasswordConfirm'))) return
     startTransition(async () => {
+      setError('')
       const result = await resetUserPassword(userId)
       if (result.success) {
         setDone(true)
