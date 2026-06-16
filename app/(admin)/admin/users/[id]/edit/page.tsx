@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import UserForm from '@/components/admin/UserForm'
+import ResetPasswordButton from '@/components/admin/ResetPasswordButton'
 
 export default async function EditUserPage({
   params,
@@ -34,6 +35,10 @@ export default async function EditUserPage({
         departments={departments ?? []}
         managers={(managers ?? []).filter(m => m.id !== id)}
       />
+      <div className="rounded-lg border border-red-200 bg-red-50 p-4">
+        <p className="mb-2 text-sm font-semibold text-red-800">{t('resetPassword')}</p>
+        <ResetPasswordButton userId={id} />
+      </div>
     </div>
   )
 }

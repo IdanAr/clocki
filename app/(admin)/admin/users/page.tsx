@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
+import ResetPasswordButton from '@/components/admin/ResetPasswordButton'
 
 const roleColours: Record<string, string> = {
   admin: 'bg-purple-100 text-purple-800',
@@ -65,19 +66,22 @@ export default async function AdminUsersPage() {
                     </td>
                     <td className="px-4 py-3 text-gray-600">{dept?.name_he ?? '—'}</td>
                     <td className="px-4 py-3 text-end">
-                      <div className="flex justify-end gap-3">
-                        <Link
-                          href={`/admin/users/${u.id}/edit`}
-                          className="text-sm text-blue-600 hover:underline"
-                        >
-                          ערוך
-                        </Link>
-                        <Link
-                          href={`/admin/users/${u.id}/assign-projects`}
-                          className="text-sm text-blue-600 hover:underline"
-                        >
-                          {t('assignProjects')}
-                        </Link>
+                      <div className="flex flex-col items-end gap-1">
+                        <div className="flex gap-3">
+                          <Link
+                            href={`/admin/users/${u.id}/edit`}
+                            className="text-sm text-blue-600 hover:underline"
+                          >
+                            ערוך
+                          </Link>
+                          <Link
+                            href={`/admin/users/${u.id}/assign-projects`}
+                            className="text-sm text-blue-600 hover:underline"
+                          >
+                            {t('assignProjects')}
+                          </Link>
+                        </div>
+                        <ResetPasswordButton userId={u.id} />
                       </div>
                     </td>
                   </tr>
