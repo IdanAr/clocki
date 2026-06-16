@@ -218,15 +218,30 @@ export async function resetUserPassword(userId: string): Promise<{ success: bool
       .eq('id', userId)
     if (updateError) return { success: false, error: updateError.message }
 
-    // Send recovery email — link goes through /auth/callback which will
-    // detect password_set=false and redirect to /login/set-password
+    // Send recovery email via GoTrue REST API directly so redirect_to is honoured.
+    // The JS SDK wraps redirectTo inside an `options` object which GoTrue ignores;
+    // calling the endpoint directly with snake_case redirect_to works correctly.
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
-    const { error: linkError } = await serviceClient.auth.admin.generateLink({
-      type: 'recovery',
-      email: profile.email,
-      options: { redirectTo: `${siteUrl}/auth/callback` },
-    })
-    if (linkError) return { success: false, error: linkError.message }
+    const linkRes = await fetch(
+      `${process.env.NEXT_PUBLIC_SUPABASE_URL}/auth/v1/admin/generate_link`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          apikey: process.env.SUPABASE_SERVICE_ROLE_KEY!,
+          Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
+        },
+        body: JSON.stringify({
+          type: 'recovery',
+          email: profile.email,
+          redirect_to: `${siteUrl}/auth/callback`,
+        }),
+      }
+    )
+    if (!linkRes.ok) {
+      const body = await linkRes.json().catch(() => null)
+      return { success: false, error: body?.message ?? 'Failed to send recovery email' }
+    }
 
     revalidatePath('/admin/users')
     return { success: true }
