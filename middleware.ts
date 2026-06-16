@@ -9,13 +9,18 @@ export async function middleware(request: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Not authenticated → send to login (except if already on login)
+  // Unauthenticated user on set-password has no session → send to login
+  if (!user && pathname === '/login/set-password') {
+    return NextResponse.redirect(new URL('/login', request.url))
+  }
+
+  // Not authenticated → send to login (except if already on login pages)
   if (!user && !pathname.startsWith('/login')) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
-  // Already authenticated → skip login pages
-  if (user && pathname.startsWith('/login')) {
+  // Already authenticated → skip login pages, but allow through to set-password
+  if (user && pathname.startsWith('/login') && pathname !== '/login/set-password') {
     return NextResponse.redirect(new URL('/timesheet/daily', request.url))
   }
 
