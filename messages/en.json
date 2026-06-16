@@ -33,7 +33,23 @@
     "loggingIn": "Signing in...",
     "sending": "Sending...",
     "checkEmail": "Check your email",
-    "checkEmailDesc": "We sent a sign-in link to {email}. Click the link to sign in."
+    "checkEmailDesc": "We sent a sign-in link to {email}. Click the link to sign in.",
+    "signIn": "Sign in",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm password",
+    "setPasswordTitle": "Create your password",
+    "setPasswordSubtitle": "Choose a password to access Clocki",
+    "setPasswordBtn": "Set password",
+    "settingPassword": "Saving...",
+    "passwordMismatch": "Passwords do not match",
+    "passwordTooShort": "Password must be 8–16 characters",
+    "passwordTooWeak": "Password must meet at least 3 complexity rules",
+    "rulesHeader": "Password must satisfy 3 of 4:",
+    "ruleUppercase": "Uppercase letter",
+    "ruleLowercase": "Lowercase letter",
+    "ruleNumber": "Number",
+    "ruleSpecial": "Special character",
+    "passwordLength": "8–16 characters"
   },
   "common": {
     "save": "Save",
@@ -187,7 +203,10 @@
     "sendInvite": "Send invite",
     "inviteSent": "Invite sent! The user will receive an email to set up their account.",
     "assignedBadge": "Assigned",
-    "saving": "Saving..."
+    "saving": "Saving...",
+    "resetPassword": "Reset Password",
+    "resetPasswordConfirm": "Reset this user's password? They will be logged out immediately and receive a reset email.",
+    "resetPasswordSent": "Password reset email sent."
   },
   "manager": {
     "approvals": "Approvals",

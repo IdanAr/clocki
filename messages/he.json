@@ -33,7 +33,23 @@
     "loggingIn": "מתחבר...",
     "sending": "שולח...",
     "checkEmail": "בדוק את האימייל שלך",
-    "checkEmailDesc": "שלחנו קישור כניסה לכתובת {email}. לחץ על הקישור כדי להתחבר."
+    "checkEmailDesc": "שלחנו קישור כניסה לכתובת {email}. לחץ על הקישור כדי להתחבר.",
+    "signIn": "כניסה",
+    "passwordLabel": "סיסמה",
+    "confirmPasswordLabel": "אימות סיסמה",
+    "setPasswordTitle": "יצירת סיסמה",
+    "setPasswordSubtitle": "בחר סיסמה לכניסה למערכת",
+    "setPasswordBtn": "קבע סיסמה",
+    "settingPassword": "שומר...",
+    "passwordMismatch": "הסיסמאות אינן תואמות",
+    "passwordTooShort": "הסיסמה חייבת להכיל 8–16 תווים",
+    "passwordTooWeak": "הסיסמה חייבת לעמוד בלפחות 3 כללי מורכבות",
+    "rulesHeader": "הסיסמה חייבת לעמוד ב-3 מתוך 4:",
+    "ruleUppercase": "אות גדולה",
+    "ruleLowercase": "אות קטנה",
+    "ruleNumber": "ספרה",
+    "ruleSpecial": "תו מיוחד",
+    "passwordLength": "8–16 תווים"
   },
   "common": {
     "save": "שמור",
@@ -187,7 +203,10 @@
     "sendInvite": "שלח הזמנה",
     "inviteSent": "ההזמנה נשלחה! המשתמש יקבל אימייל להגדרת חשבונו.",
     "assignedBadge": "משויך",
-    "saving": "שומר..."
+    "saving": "שומר...",
+    "resetPassword": "איפוס סיסמה",
+    "resetPasswordConfirm": "לאפס את סיסמת המשתמש? הוא יתנתק מיידית ויקבל מייל לאיפוס.",
+    "resetPasswordSent": "מייל לאיפוס סיסמה נשלח."
   },
   "manager": {
     "approvals": "אישורים",
