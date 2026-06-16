@@ -182,3 +182,52 @@ export async function updateDepartment(id: string, formData: FormData): Promise<
     return { success: false, error: e instanceof Error ? e.message : 'Error' }
   }
 }
+
+export async function resetUserPassword(userId: string): Promise<{ success: boolean; error?: string }> {
+  try {
+    await assertAdmin()
+    const serviceClient = createServiceClient()
+
+    // Fetch the user's email (needed for generateLink)
+    const { data: profile, error: profileError } = await serviceClient
+      .from('users')
+      .select('email')
+      .eq('id', userId)
+      .single()
+    if (profileError || !profile) return { success: false, error: 'User not found' }
+
+    // Mark password as unset so the callback routes them to set-password
+    const { error: updateError } = await serviceClient
+      .from('users')
+      .update({ password_set: false })
+      .eq('id', userId)
+    if (updateError) return { success: false, error: updateError.message }
+
+    // Revoke all active sessions for the user immediately
+    await fetch(
+      `${process.env.NEXT_PUBLIC_SUPABASE_URL}/auth/v1/admin/users/${userId}/logout`,
+      {
+        method: 'POST',
+        headers: {
+          apikey: process.env.SUPABASE_SERVICE_ROLE_KEY!,
+          Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
+        },
+      }
+    )
+
+    // Send recovery email — link goes through /auth/callback which will
+    // detect password_set=false and redirect to /login/set-password
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+    const { error: linkError } = await serviceClient.auth.admin.generateLink({
+      type: 'recovery',
+      email: profile.email,
+      options: { redirectTo: `${siteUrl}/auth/callback` },
+    })
+    if (linkError) return { success: false, error: linkError.message }
+
+    revalidatePath('/admin/users')
+    return { success: true }
+  } catch (e) {
+    return { success: false, error: e instanceof Error ? e.message : 'Error' }
+  }
+}
