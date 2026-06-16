@@ -27,6 +27,7 @@ export interface Database {
           role: UserRole
           department_id: string | null; manager_id: string | null
           created_at: string
+          password_set: boolean
         }
         Insert: Omit<Database['public']['Tables']['users']['Row'], 'created_at'>
         Update: Partial<Database['public']['Tables']['users']['Row']>
