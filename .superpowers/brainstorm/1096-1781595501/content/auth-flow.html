@@ -1,0 +1,220 @@
+<h2>New Authentication & Onboarding Flow</h2>
+<p class="subtitle">Three distinct paths — initial onboarding, standard login, admin reset</p>
+
+<style>
+  .flow-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .flow-col {
+    background: var(--surface, #f8f9fa);
+    border: 1.5px solid var(--border, #e2e8f0);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .flow-col h3 {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 16px;
+    color: var(--accent, #3b82f6);
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .step-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent, #3b82f6);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-num.green { background: #16a34a; }
+  .step-num.orange { background: #ea580c; }
+  .step-num.purple { background: #7c3aed; }
+  .step-body {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .step-label {
+    font-weight: 600;
+    display: block;
+    color: var(--text, #1e293b);
+  }
+  .step-sub {
+    color: var(--muted, #64748b);
+    font-size: 12px;
+  }
+  .arrow {
+    text-align: center;
+    color: var(--muted, #94a3b8);
+    font-size: 18px;
+    margin: 2px 0;
+    padding-left: 32px;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 99px;
+    margin-top: 4px;
+  }
+  .tag-new { background: #dcfce7; color: #15803d; }
+  .tag-changed { background: #fef9c3; color: #854d0e; }
+  .tag-unchanged { background: #f1f5f9; color: #475569; }
+
+  .db-note {
+    margin-top: 24px;
+    padding: 14px 18px;
+    background: #eff6ff;
+    border: 1.5px solid #bfdbfe;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #1e40af;
+  }
+  .db-note strong { display: block; margin-bottom: 4px; }
+</style>
+
+<div class="flow-grid">
+  <!-- Path 1 -->
+  <div class="flow-col">
+    <h3>① Initial Onboarding</h3>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <span class="step-label">Admin invites user</span>
+        <span class="step-sub">inviteUserByEmail → Supabase sends OTP email<br><span class="tag tag-unchanged">Unchanged</span></span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <span class="step-label">User clicks OTP link</span>
+        <span class="step-sub">Lands on /auth/callback with code<br><span class="tag tag-changed">Modified</span></span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <span class="step-label">Callback checks password_set</span>
+        <span class="step-sub">users.password_set = false → redirect to /login/set-password<br><span class="tag tag-changed">Modified</span></span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <span class="step-label">User sets password</span>
+        <span class="step-sub">8–16 chars, 3 of 4 rules, confirmed twice<br><span class="tag tag-new">New page</span></span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <span class="step-label">Password saved</span>
+        <span class="step-sub">updateUser({password}) + password_set = true → /timesheet/daily</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Path 2 -->
+  <div class="flow-col">
+    <h3>② Standard Login</h3>
+
+    <div class="step">
+      <div class="step-num green">1</div>
+      <div class="step-body">
+        <span class="step-label">User opens /login</span>
+        <span class="step-sub">Email + Password form (replaces OTP input)<br><span class="tag tag-changed">Modified</span></span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num green">2</div>
+      <div class="step-body">
+        <span class="step-label">signInWithPassword</span>
+        <span class="step-sub">Supabase validates credentials<br><span class="tag tag-changed">Modified</span></span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num green">3</div>
+      <div class="step-body">
+        <span class="step-label">Redirect to /timesheet/daily</span>
+        <span class="step-sub">Normal authenticated session</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px; padding: 12px; background: #fef3c7; border-radius: 8px; font-size: 12px; color: #78350f;">
+      <strong>No "Forgot password" link</strong><br>Password reset is admin-only. Login page has no self-service option.
+    </div>
+  </div>
+
+  <!-- Path 3 -->
+  <div class="flow-col">
+    <h3>③ Admin Password Reset</h3>
+
+    <div class="step">
+      <div class="step-num orange">1</div>
+      <div class="step-body">
+        <span class="step-label">Admin clicks "Reset Password"</span>
+        <span class="step-sub">Button on user list row AND user edit page<br><span class="tag tag-new">New action</span></span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num orange">2</div>
+      <div class="step-body">
+        <span class="step-label">Server action runs</span>
+        <span class="step-sub">① set password_set = false<br>② revoke user sessions (service client)<br>③ send recovery email via Admin API</span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num orange">3</div>
+      <div class="step-body">
+        <span class="step-label">User logged out immediately</span>
+        <span class="step-sub">Any active session is invalidated</span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num orange">4</div>
+      <div class="step-body">
+        <span class="step-label">User clicks recovery link</span>
+        <span class="step-sub">/auth/callback → password_set = false → /login/set-password</span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="step">
+      <div class="step-num orange">5</div>
+      <div class="step-body">
+        <span class="step-label">Repeats onboarding flow</span>
+        <span class="step-sub">Same password creation screen as initial setup</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="db-note">
+  <strong>One DB change required</strong>
+  ALTER TABLE users ADD COLUMN password_set boolean NOT NULL DEFAULT false; — all existing users start as false (but only matter when they next need to authenticate via OTP/recovery link).
+</div>

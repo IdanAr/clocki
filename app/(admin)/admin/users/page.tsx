@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server'
+import { createServiceClient } from '@/lib/supabase/service'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import ResetPasswordButton from '@/components/admin/ResetPasswordButton'
@@ -12,12 +12,13 @@ const roleColours: Record<string, string> = {
 export default async function AdminUsersPage() {
   const t = await getTranslations('admin')
   const profileT = await getTranslations('profile')
-  const supabase = await createClient()
+  const supabase = createServiceClient()
 
-  const { data: users } = await supabase
+  const { data: users, error: usersError } = await supabase
     .from('users')
-    .select('*, departments(name_he)')
+    .select('*, departments!users_department_id_fkey(name_he)')
     .order('full_name_he')
+  if (usersError) console.error('[admin/users] query error:', usersError)
 
   return (
     <div className="flex flex-col gap-4">

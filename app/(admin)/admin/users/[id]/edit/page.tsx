@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server'
+import { createServiceClient } from '@/lib/supabase/service'
 import { getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
@@ -12,7 +12,7 @@ export default async function EditUserPage({
 }) {
   const { id } = await params
   const t = await getTranslations('admin')
-  const supabase = await createClient()
+  const supabase = createServiceClient()
 
   const [{ data: user }, { data: departments }, { data: managers }] = await Promise.all([
     supabase.from('users').select('*').eq('id', id).single(),

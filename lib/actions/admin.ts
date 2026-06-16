@@ -207,7 +207,8 @@ export async function resetUserPassword(userId: string): Promise<{ success: bool
         },
       }
     )
-    if (!logoutRes.ok) {
+    // 404 = user has no active sessions (already logged out) — not a failure
+    if (!logoutRes.ok && logoutRes.status !== 404) {
       return { success: false, error: 'Failed to revoke user sessions' }
     }
 
@@ -218,30 +219,14 @@ export async function resetUserPassword(userId: string): Promise<{ success: bool
       .eq('id', userId)
     if (updateError) return { success: false, error: updateError.message }
 
-    // Send recovery email via GoTrue REST API directly so redirect_to is honoured.
-    // The JS SDK wraps redirectTo inside an `options` object which GoTrue ignores;
-    // calling the endpoint directly with snake_case redirect_to works correctly.
+    // resetPasswordForEmail sends the actual Supabase recovery email.
+    // generate_link only returns the link without sending — wrong for this use case.
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
-    const linkRes = await fetch(
-      `${process.env.NEXT_PUBLIC_SUPABASE_URL}/auth/v1/admin/generate_link`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          apikey: process.env.SUPABASE_SERVICE_ROLE_KEY!,
-          Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
-        },
-        body: JSON.stringify({
-          type: 'recovery',
-          email: profile.email,
-          redirect_to: `${siteUrl}/auth/callback`,
-        }),
-      }
+    const { error: resetError } = await serviceClient.auth.resetPasswordForEmail(
+      profile.email,
+      { redirectTo: `${siteUrl}/login/confirm` },
     )
-    if (!linkRes.ok) {
-      const body = await linkRes.json().catch(() => null)
-      return { success: false, error: body?.message ?? 'Failed to send recovery email' }
-    }
+    if (resetError) return { success: false, error: resetError.message }
 
     revalidatePath('/admin/users')
     return { success: true }

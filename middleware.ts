@@ -19,8 +19,13 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
-  // Already authenticated → skip login pages, but allow through to set-password
-  if (user && pathname.startsWith('/login') && pathname !== '/login/set-password') {
+  // Already authenticated → skip login pages, but allow through to set-password and confirm
+  if (
+    user &&
+    pathname.startsWith('/login') &&
+    pathname !== '/login/set-password' &&
+    pathname !== '/login/confirm'
+  ) {
     return NextResponse.redirect(new URL('/timesheet/daily', request.url))
   }
 
